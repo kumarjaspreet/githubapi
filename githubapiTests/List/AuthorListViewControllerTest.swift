@@ -73,7 +73,7 @@ class MockAuthorListViewModel: GitAuthorViewModel {
     }
     
     var viewLoadedCalled = false
-    func viewLoaded() {
+    func fetchList() {
         viewLoadedCalled = true
     }
     

@@ -39,7 +39,7 @@ class AuthorListViewModelTest: XCTestCase {
     
     func testViewLoaded() {
         viewModel.currentPage = 3
-        viewModel.viewLoaded()
+        viewModel.fetchList()
         XCTAssert(mockManager.repoUrl == "project/repo/commits?per_page=25&page=3")
     }
 }

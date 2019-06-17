@@ -149,6 +149,19 @@
                                     <outlet property="delegate" destination="7xt-VV-Kru" id="5L8-6P-wno"/>
                                 </connections>
                             </tableView>
+                            <view alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aO7-gI-Xug">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="HvQ-8Q-EjL">
+                                        <rect key="frame" x="188.5" y="390.5" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HvQ-8Q-EjL" firstAttribute="centerX" secondItem="aO7-gI-Xug" secondAttribute="centerX" id="Shf-qL-WAM"/>
+                                    <constraint firstItem="HvQ-8Q-EjL" firstAttribute="centerY" secondItem="aO7-gI-Xug" secondAttribute="centerY" id="tHy-zQ-ojv"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -156,10 +169,19 @@
                             <constraint firstItem="h3J-nX-Zwb" firstAttribute="leading" secondItem="cYK-vd-4sW" secondAttribute="leading" id="FvT-kp-09J"/>
                             <constraint firstItem="h3J-nX-Zwb" firstAttribute="top" secondItem="cYK-vd-4sW" secondAttribute="top" id="LDS-vV-y6A"/>
                             <constraint firstAttribute="bottom" secondItem="h3J-nX-Zwb" secondAttribute="bottom" id="M3x-6X-uqV"/>
+                            <constraint firstAttribute="bottom" secondItem="h3J-nX-Zwb" secondAttribute="bottom" id="X7B-84-krW"/>
+                            <constraint firstItem="aO7-gI-Xug" firstAttribute="leading" secondItem="cYK-vd-4sW" secondAttribute="leading" id="fcj-Ej-SB0"/>
+                            <constraint firstItem="aO7-gI-Xug" firstAttribute="top" secondItem="cYK-vd-4sW" secondAttribute="top" id="nf4-Z3-Lvm"/>
+                            <constraint firstItem="h3J-nX-Zwb" firstAttribute="leading" secondItem="cYK-vd-4sW" secondAttribute="leading" id="oym-OQ-RCZ"/>
+                            <constraint firstItem="h3J-nX-Zwb" firstAttribute="top" secondItem="cYK-vd-4sW" secondAttribute="top" id="p64-nD-ALT"/>
+                            <constraint firstItem="h3J-nX-Zwb" firstAttribute="trailing" secondItem="cYK-vd-4sW" secondAttribute="trailing" id="tji-w7-dYv"/>
+                            <constraint firstItem="cYK-vd-4sW" firstAttribute="bottom" secondItem="aO7-gI-Xug" secondAttribute="bottom" id="w15-OS-zPR"/>
+                            <constraint firstItem="cYK-vd-4sW" firstAttribute="trailing" secondItem="aO7-gI-Xug" secondAttribute="trailing" id="xg9-AS-M5R"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cYK-vd-4sW"/>
                     </view>
                     <connections>
+                        <outlet property="loadingView" destination="aO7-gI-Xug" id="Kp2-H9-Yzv"/>
                         <outlet property="tableView" destination="h3J-nX-Zwb" id="Z9Y-jJ-YWk"/>
                     </connections>
                 </viewController>

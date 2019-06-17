@@ -13,13 +13,15 @@ typealias AuthorInfo = (name: String?, commit: String?, message: String?)
 protocol GitAuthorView: class {
     func reloadTable()
     func showAlert(message: String)
+    func stopTableRefresh()
+    func hideLoadingView()
 }
 
 protocol GitAuthorViewModel {
     var delegate: GitAuthorView? { get set }
     init(project: String, repo: String,  manager: GitNetworkManager)
     
-    func viewLoaded()
+    func fetchList()
     var numberOfRows: Int { get }
     func authorInfo(at index:Int) -> AuthorInfo
     func tableScrolled(at index: Int)

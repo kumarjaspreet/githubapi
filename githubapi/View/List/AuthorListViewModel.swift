@@ -7,6 +7,7 @@
 //
 
 import Foundation
+
 class AuthorListViewModel {
     weak var delegate: GitAuthorView?
     var commitList: [GitAuthorDetails] = []
@@ -15,6 +16,7 @@ class AuthorListViewModel {
     let networkManager: GitNetworkManager
     let projectName: String
     let repoName: String
+    var isRefreshList = false
     
     required init(project: String, repo: String,  manager: GitNetworkManager = NetworkManager()) {
         projectName = project
@@ -33,15 +35,17 @@ extension AuthorListViewModel: GitAuthorViewModel {
         return AuthorInfo(listItem.authorName, listItem.sha, listItem.commitMessage)
     }
     
-    func viewLoaded() {
-        fetchCommitList()
+    func fetchList() {
+        isRefreshList = true
+        fetchCommitList(at: 1)
     }
     
     func tableScrolled(at index: Int) {
         guard !isCommitListComplete else { return }
         guard index+1 == commitList.count else { return }
+        //TODO: Below code can be optimized by using UITableViewDataSourcePrefetching
         currentPage += 1
-        fetchCommitList()
+        fetchCommitList(at: currentPage)
     }
     
     func resetList() {
@@ -49,10 +53,10 @@ extension AuthorListViewModel: GitAuthorViewModel {
         commitList = []
     }
     
-    private func fetchCommitList() {
+    private func fetchCommitList(at index: Int) {
         //TODO: Below code can be refactored to use URLComponents.
         let commitUrl = "\(NetworkConstants.perPageUrl)=\(NetworkConstants.commitsPerPage)"
-        let pageUrl = "\(NetworkConstants.currentpageUrl)=\(currentPage)"
+        let pageUrl = "\(NetworkConstants.currentpageUrl)=\(index)"
         let url = "\(projectName)/\(repoName)/commits?\(commitUrl)&\(pageUrl)"
         networkManager.fetchList(repoUrl: url, completion: completion, failure: failure)
     }
@@ -66,16 +70,30 @@ extension AuthorListViewModel: GitAuthorViewModel {
     
     var failure: ServiceFailure {
         return { [weak self] _ in
+            defer {
+                self?.isRefreshList = false
+                self?.delegate?.hideLoadingView()
+                self?.delegate?.stopTableRefresh()
+            }
             guard self?.currentPage == 1 else { return }
             self?.delegate?.showAlert(message: AuthorListConstants.errorMessage)
         }
     }
     
     func updateCommitList(_ list: [GitAuthorDetails]) {
-        if list.count > 0 {
-            commitList += list
-            delegate?.reloadTable()
+        defer {
+            isRefreshList = false
+            isCommitListComplete = list.count < NetworkConstants.commitsPerPage
+            delegate?.hideLoadingView()
+            delegate?.stopTableRefresh()
         }
-        isCommitListComplete = list.count < NetworkConstants.commitsPerPage
+        guard list.count > 0 else { return }
+        if isRefreshList {
+            commitList = list
+            currentPage = 1
+        } else {
+            commitList += list
+        }
+        delegate?.reloadTable()
     }
 }

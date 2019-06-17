@@ -11,10 +11,20 @@ class AuthorListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var viewModel: GitAuthorViewModel!
+    private let refreshControl = UIRefreshControl()
+    @IBOutlet weak var loadingView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.viewLoaded()
+        tableView.refreshControl = refreshControl
+        refreshControl.addTarget(self, action: #selector(refreshList), for: .valueChanged)
+        loadingView.isHidden = false
+        view.bringSubviewToFront(loadingView)
+        viewModel.fetchList()
+    }
+    
+    @objc func refreshList() {
+        viewModel.fetchList()
     }
     
     func updateProject(project: String, repo: String) {
@@ -36,6 +46,19 @@ extension AuthorListViewController: GitAuthorView {
     func reloadTable() {
         DispatchQueue.main.async {[weak self] in
             self?.tableView.reloadData()
+            self?.loadingView.isHidden = true
+        }
+    }
+    
+    func stopTableRefresh() {
+        DispatchQueue.main.async {[weak self] in
+            self?.refreshControl.endRefreshing()
+        }
+    }
+    
+    func hideLoadingView() {
+        DispatchQueue.main.async {[weak self] in
+            self?.loadingView.isHidden = true
         }
     }
 }
