@@ -8,11 +8,11 @@
 
 import Foundation
 
-class GitContributions: Codable {
+struct GitContributions: Codable {
     var total: Int?
 }
 
-class GitAuthorDetails: Codable {
+struct GitAuthorDetails: Codable {
     var sha: String?
     var commit: GitCommit?
     var author: GitAuthor?
@@ -26,10 +26,10 @@ class GitAuthorDetails: Codable {
     }
 }
 
-class GitCommit: Codable {
+struct GitCommit: Codable {
     var message: String?
 }
 
-class GitAuthor: Codable {
+struct GitAuthor: Codable {
     var name: String?
 }

@@ -27,6 +27,7 @@
 		727C57A622B7982D006F18FE /* AuthorListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A522B7982D006F18FE /* AuthorListViewModelTest.swift */; };
 		727C57A822B798D3006F18FE /* GitAuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A722B798D3006F18FE /* GitAuthorModel.swift */; };
 		727C57AA22B7A62A006F18FE /* AuthorListTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */; };
+		727C57AD22B7A72D006F18FE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57AC22B7A72D006F18FE /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		727C57A522B7982D006F18FE /* AuthorListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListViewModelTest.swift; sourceTree = "<group>"; };
 		727C57A722B798D3006F18FE /* GitAuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAuthorModel.swift; sourceTree = "<group>"; };
 		727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListTableViewCellTest.swift; sourceTree = "<group>"; };
+		727C57AC22B7A72D006F18FE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 		727C575822B70E86006F18FE /* githubapi */ = {
 			isa = PBXGroup;
 			children = (
+				727C57AB22B7A71A006F18FE /* Networking */,
 				727C579A22B727C0006F18FE /* View */,
 				727C575922B70E86006F18FE /* AppDelegate.swift */,
 				727C575D22B70E86006F18FE /* Main.storyboard */,
@@ -210,6 +213,14 @@
 				727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */,
 			);
 			path = List;
+			sourceTree = "<group>";
+		};
+		727C57AB22B7A71A006F18FE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				727C57AC22B7A72D006F18FE /* NetworkManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,6 +358,7 @@
 				727C579222B7254B006F18FE /* SearchWireframes.swift in Sources */,
 				727C578922B715BF006F18FE /* SearchViewController.swift in Sources */,
 				727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */,
+				727C57AD22B7A72D006F18FE /* NetworkManager.swift in Sources */,
 				727C579522B72787006F18FE /* AuthorListViewController.swift in Sources */,
 				727C57A122B7943F006F18FE /* AuthorTableViewCell.swift in Sources */,
 				727C579D22B727F7006F18FE /* BaseViewController.swift in Sources */,
