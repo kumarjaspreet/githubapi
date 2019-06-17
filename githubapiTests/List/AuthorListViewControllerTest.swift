@@ -30,8 +30,14 @@ class AuthorListViewControllerTest: XCTestCase {
     }
     
     func testViewDidLoad() {
+        let tableView = UITableView()
+        let loadingView = UIView()
+        viewController.tableView = tableView
+        viewController.loadingView = loadingView
         viewController.viewDidLoad()
         XCTAssertTrue(mockViewModel.viewLoadedCalled)
+        XCTAssertNotNil(tableView.refreshControl)
+        XCTAssertFalse(loadingView.isHidden)
     }
     
     func testDefaultViewModel() {
