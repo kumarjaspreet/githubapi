@@ -10,6 +10,7 @@ import Foundation
 
 protocol SeacrhGithubView: class {
     func showAlert(message: String)
+    func showCommitList()
 }
 
 protocol GithubSearchViewModel {
@@ -19,4 +20,5 @@ protocol GithubSearchViewModel {
 
 struct SearchViewConstants {
     static let invalidEntryMessage = "Project or repo name cannot be blank."
+    static let listControllerIdentifier = "AuthorListViewController"
 }

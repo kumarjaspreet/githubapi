@@ -25,6 +25,8 @@
 		727C57A122B7943F006F18FE /* AuthorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A022B7943F006F18FE /* AuthorTableViewCell.swift */; };
 		727C57A422B79825006F18FE /* AuthorListViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A322B79825006F18FE /* AuthorListViewControllerTest.swift */; };
 		727C57A622B7982D006F18FE /* AuthorListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A522B7982D006F18FE /* AuthorListViewModelTest.swift */; };
+		727C57A822B798D3006F18FE /* GitAuthorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A722B798D3006F18FE /* GitAuthorModel.swift */; };
+		727C57AA22B7A62A006F18FE /* AuthorListTableViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,8 @@
 		727C57A022B7943F006F18FE /* AuthorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorTableViewCell.swift; sourceTree = "<group>"; };
 		727C57A322B79825006F18FE /* AuthorListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListViewControllerTest.swift; sourceTree = "<group>"; };
 		727C57A522B7982D006F18FE /* AuthorListViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListViewModelTest.swift; sourceTree = "<group>"; };
+		727C57A722B798D3006F18FE /* GitAuthorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitAuthorModel.swift; sourceTree = "<group>"; };
+		727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListTableViewCellTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +179,7 @@
 				727C579622B72792006F18FE /* AuthorListViewModel.swift */,
 				727C579822B727A6006F18FE /* AuthorListWireframes.swift */,
 				727C57A022B7943F006F18FE /* AuthorTableViewCell.swift */,
+				727C57A722B798D3006F18FE /* GitAuthorModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				727C57A322B79825006F18FE /* AuthorListViewControllerTest.swift */,
 				727C57A522B7982D006F18FE /* AuthorListViewModelTest.swift */,
+				727C57A922B7A62A006F18FE /* AuthorListTableViewCellTest.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				727C579D22B727F7006F18FE /* BaseViewController.swift in Sources */,
 				727C579922B727A6006F18FE /* AuthorListWireframes.swift in Sources */,
 				727C575A22B70E86006F18FE /* AppDelegate.swift in Sources */,
+				727C57A822B798D3006F18FE /* GitAuthorModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +362,7 @@
 			files = (
 				727C579022B71AFF006F18FE /* SearchViewModelTest.swift in Sources */,
 				727C578E22B71AF6006F18FE /* SearchViewControllerTest.swift in Sources */,
+				727C57AA22B7A62A006F18FE /* AuthorListTableViewCellTest.swift in Sources */,
 				727C576F22B70E86006F18FE /* githubapiTests.swift in Sources */,
 				727C57A422B79825006F18FE /* AuthorListViewControllerTest.swift in Sources */,
 				727C57A622B7982D006F18FE /* AuthorListViewModelTest.swift in Sources */,

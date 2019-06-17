@@ -38,13 +38,18 @@ class SearchViewModelTest: XCTestCase {
     func testSearcgButtonWithValidValues() {
         viewModel.searchButtonClicked(projectName: "kumarjaspreet", repoName: "githubapi")
         XCTAssertNil(mockDelegate.showAlertMessage)
+        XCTAssertTrue(mockDelegate.commitListShown)
     }
 }
 
 class MockSearchView: SeacrhGithubView {
-    
     var showAlertMessage: String?
     func showAlert(message: String) {
         showAlertMessage = message
+    }
+    
+    var commitListShown = false
+    func showCommitList() {
+        commitListShown = true
     }
 }

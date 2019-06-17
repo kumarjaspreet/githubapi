@@ -18,5 +18,6 @@ extension SearchViewModel: GithubSearchViewModel {
             delegate?.showAlert(message: SearchViewConstants.invalidEntryMessage)
             return
         }
+        delegate?.showCommitList()
     }
 }

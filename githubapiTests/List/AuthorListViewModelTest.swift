@@ -11,12 +11,24 @@ import XCTest
 
 class AuthorListViewModelTest: XCTestCase {
     
+    var viewModel: AuthorListViewModel!
+    var mockDelegate: MockAuthorListView!
     
     override func setUp() {
         super.setUp()
+        mockDelegate = MockAuthorListView()
+        viewModel = AuthorListViewModel()
+        viewModel.delegate = mockDelegate
     }
     
     override func tearDown() {
         super.tearDown()
+        viewModel = nil
+        mockDelegate = nil
     }
 }
+
+class MockAuthorListView: GitAuthorView {
+    
+}
+
