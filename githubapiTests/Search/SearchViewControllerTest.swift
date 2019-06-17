@@ -11,11 +11,28 @@ import XCTest
 
 class SearchViewControllerTest: XCTestCase {
     
+    var viewController: SearchViewController!
+    var mockViewModel: MockSearchViewModel!
+    
     override func setUp() {
         super.setUp()
+        viewController = SearchViewController()
+        mockViewModel = MockSearchViewModel()
+        viewController.viewModel = mockViewModel
     }
     
     override func tearDown() {
         super.tearDown()
     }
+    
+    func testSearchButtonClicked() {
+        viewController.searchButtonClicked(UIButton())
+        XCTAssertTrue(mockViewModel.searchButtonClicked)
+    }
+}
+
+class MockSearchViewModel: GithubSearchViewModel {
+    var delegate: SeacrhGithubView? = nil
+    
+    var searchButtonClicked = false
 }
