@@ -26,6 +26,10 @@ class SearchViewControllerTest: XCTestCase {
     }
     
     func testSearchButtonClicked() {
+        let projectTextField = UITextField()
+        let repoTextField = UITextField()
+        viewController.projectNameTextField = projectTextField
+        viewController.repoNameTextField = repoTextField
         viewController.searchButtonClicked(UIButton())
         XCTAssertTrue(mockViewModel.searchButtonClicked)
     }
@@ -35,4 +39,8 @@ class MockSearchViewModel: GithubSearchViewModel {
     var delegate: SeacrhGithubView? = nil
     
     var searchButtonClicked = false
+    
+    func searchButtonClicked(projectName: String?, repoName: String?) {
+        searchButtonClicked = true
+    }
 }

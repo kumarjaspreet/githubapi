@@ -8,14 +8,15 @@
 
 import Foundation
 
-protocol GithubSearchViewModel {
-    var delegate: SeacrhGithubView? { get set }
-}
-
 struct SearchViewModel {
     weak var delegate: SeacrhGithubView?
 }
 
 extension SearchViewModel: GithubSearchViewModel {
-    
+    func searchButtonClicked(projectName: String?, repoName: String?) {
+        guard projectName?.isEmpty == false, repoName?.isEmpty == false else {
+            delegate?.showAlert(message: SearchViewConstants.invalidEntryMessage)
+            return
+        }
+    }
 }

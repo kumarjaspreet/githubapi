@@ -17,6 +17,7 @@
 		727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578A22B715CC006F18FE /* SearchViewModel.swift */; };
 		727C578E22B71AF6006F18FE /* SearchViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578D22B71AF6006F18FE /* SearchViewControllerTest.swift */; };
 		727C579022B71AFF006F18FE /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578F22B71AFF006F18FE /* SearchViewModelTest.swift */; };
+		727C579222B7254B006F18FE /* SearchWireframes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C579122B7254B006F18FE /* SearchWireframes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		727C578A22B715CC006F18FE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		727C578D22B71AF6006F18FE /* SearchViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTest.swift; sourceTree = "<group>"; };
 		727C578F22B71AFF006F18FE /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
+		727C579122B7254B006F18FE /* SearchWireframes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWireframes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 			children = (
 				727C578822B715BF006F18FE /* SearchViewController.swift */,
 				727C578A22B715CC006F18FE /* SearchViewModel.swift */,
+				727C579122B7254B006F18FE /* SearchWireframes.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727C579222B7254B006F18FE /* SearchWireframes.swift in Sources */,
 				727C578922B715BF006F18FE /* SearchViewController.swift in Sources */,
 				727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */,
 				727C575A22B70E86006F18FE /* AppDelegate.swift in Sources */,

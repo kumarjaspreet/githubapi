@@ -8,10 +8,6 @@
 
 import UIKit
 
-protocol SeacrhGithubView: class {
-    
-}
-
 class SearchViewController: UIViewController {
     var viewModel: GithubSearchViewModel = SearchViewModel()
     
@@ -24,7 +20,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonClicked(_ sender: Any) {
-        
+        viewModel.searchButtonClicked(projectName: projectNameTextField.text, repoName: repoNameTextField.text)
     }
 }
 
@@ -36,5 +32,10 @@ extension SearchViewController: UITextFieldDelegate {
 }
 
 extension SearchViewController: SeacrhGithubView {
-    
+    func showAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
