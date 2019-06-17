@@ -9,4 +9,7 @@
 import Foundation
 struct NetworkConstants {
     static let baseUrl = "https://api.github.com/repos/"
+    static let commitsPerPage = 25
+    static let perPageUrl = "per_page"
+    static let currentpageUrl = "page"
 }

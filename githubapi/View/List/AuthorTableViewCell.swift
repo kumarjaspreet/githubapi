@@ -7,6 +7,11 @@
 //
 
 import UIKit
+
+struct AuthorCellConstants {
+    static let commitHash = "Commit: "
+}
+
 class AuthorTableViewCell: UITableViewCell {
     @IBOutlet weak var authorNameLabel: UILabel!
     @IBOutlet weak var commitHashLabel: UILabel!
@@ -14,7 +19,7 @@ class AuthorTableViewCell: UITableViewCell {
     
     func configureCell(authorInfo: AuthorInfo) {
         authorNameLabel.text = authorInfo.name
-        commitHashLabel.text = authorInfo.commit
+        commitHashLabel.text = "\(AuthorCellConstants.commitHash)\(authorInfo.commit ?? "")"
         commitMessageLabel.text = authorInfo.message
     }
 }

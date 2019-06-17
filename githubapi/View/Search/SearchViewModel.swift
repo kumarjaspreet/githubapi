@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct SearchViewModel {
+class SearchViewModel {
     weak var delegate: SeacrhGithubView?
 }
 
@@ -18,6 +18,6 @@ extension SearchViewModel: GithubSearchViewModel {
             delegate?.showAlert(message: SearchViewConstants.invalidEntryMessage)
             return
         }
-        delegate?.showCommitList()
+        delegate?.showCommitList(project: projectName!, repo: repoName!)
     }
 }

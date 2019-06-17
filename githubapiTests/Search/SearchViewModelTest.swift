@@ -23,6 +23,8 @@ class SearchViewModelTest: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        mockDelegate = nil
+        viewModel = nil
     }
     
     func testSearchButtonClickedNilValues() {
@@ -38,18 +40,22 @@ class SearchViewModelTest: XCTestCase {
     func testSearcgButtonWithValidValues() {
         viewModel.searchButtonClicked(projectName: "kumarjaspreet", repoName: "githubapi")
         XCTAssertNil(mockDelegate.showAlertMessage)
-        XCTAssertTrue(mockDelegate.commitListShown)
+        XCTAssertTrue(mockDelegate.projectName == "kumarjaspreet")
+        XCTAssertTrue(mockDelegate.repoName == "githubapi")
     }
 }
 
 class MockSearchView: SeacrhGithubView {
+    
+    var projectName: String?
+    var repoName: String?
+    func showCommitList(project: String, repo: String) {
+        projectName = project
+        repoName = repo
+    }
+    
     var showAlertMessage: String?
     func showAlert(message: String) {
         showAlertMessage = message
-    }
-    
-    var commitListShown = false
-    func showCommitList() {
-        commitListShown = true
     }
 }

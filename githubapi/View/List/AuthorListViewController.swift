@@ -10,15 +10,24 @@ import UIKit
 class AuthorListViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var viewModel: GitAuthorViewModel = AuthorListViewModel()
+    var viewModel: GitAuthorViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.viewLoaded()
+    }
+    
+    func updateProject(project: String, repo: String) {
+        viewModel = AuthorListViewModel(project: project, repo: repo)
     }
 }
 
 extension AuthorListViewController: GitAuthorView {
-    
+    func reloadTable() {
+        DispatchQueue.main.async {[weak self] in
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 extension AuthorListViewController: UITableViewDataSource {

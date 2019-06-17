@@ -13,10 +13,12 @@ class AuthorListViewControllerTest: XCTestCase {
     
     var viewController: AuthorListViewController!
     var mockViewModel: MockAuthorListViewModel!
+    var mockManager: MockNetworkManager!
     
     override func setUp() {
         super.setUp()
-        mockViewModel = MockAuthorListViewModel()
+        mockManager = MockNetworkManager()
+        mockViewModel = MockAuthorListViewModel(project: "project", repo: "repo", manager: mockManager)
         viewController = AuthorListViewController()
         viewController.viewModel = mockViewModel
     }
@@ -25,6 +27,29 @@ class AuthorListViewControllerTest: XCTestCase {
         super.tearDown()
         viewController = nil
         mockViewModel = nil
+    }
+    
+    func testViewDidLoad() {
+        viewController.viewDidLoad()
+        XCTAssertTrue(mockViewModel.viewLoadedCalled)
+    }
+    
+    func testDefaultViewModel() {
+        let vc = AuthorListViewController()
+        XCTAssertNil(vc.viewModel)
+    }
+    
+    func testViewModelInit() {
+        let vc = AuthorListViewController()
+        vc.updateProject(project: "project", repo: "repo")
+        XCTAssertNotNil(vc.viewModel)
+    }
+    
+    func testUpdateProject() {
+        viewController.updateProject(project: "project", repo: "repo")
+        XCTAssert(mockViewModel.projectName == "project")
+        XCTAssert(mockViewModel.repoName == "repo")
+        XCTAssertNotNil(mockViewModel.manager)
     }
     
     func testNumberOfRows() {
@@ -38,6 +63,20 @@ class AuthorListViewControllerTest: XCTestCase {
 
 class MockAuthorListViewModel: GitAuthorViewModel {
     
+    var projectName: String?
+    var repoName: String?
+    var manager: GitNetworkManager?
+    required init(project: String, repo: String, manager: GitNetworkManager) {
+        projectName = project
+        repoName = repo
+        self.manager = manager
+    }
+    
+    var viewLoadedCalled = false
+    func viewLoaded() {
+        viewLoadedCalled = true
+    }
+    
     func authorInfo(at index: Int) -> AuthorInfo {
         return AuthorInfo("name", "sha", "commit message")
     }
@@ -46,5 +85,19 @@ class MockAuthorListViewModel: GitAuthorViewModel {
     
     var numberOfRows: Int {
         return 1
+    }
+}
+
+class MockNetworkManager: GitNetworkManager {
+    init() {}
+    
+    var session:URLSessionProtocol?
+    required init(session: URLSessionProtocol) {
+        self.session = session
+    }
+    
+    var repoUrl: String?
+    func fetchList<T>(repoUrl: String, completion: @escaping (([T]) -> Void), failure: @escaping ServiceFailure) where T : Decodable, T : Encodable {
+        self.repoUrl = repoUrl
     }
 }

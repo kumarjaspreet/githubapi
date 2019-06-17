@@ -10,7 +10,7 @@ import Foundation
 
 protocol SeacrhGithubView: class {
     func showAlert(message: String)
-    func showCommitList()
+    func showCommitList(project: String, repo: String)
 }
 
 protocol GithubSearchViewModel {

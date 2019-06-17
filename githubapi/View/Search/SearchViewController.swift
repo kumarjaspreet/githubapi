@@ -39,8 +39,9 @@ extension SearchViewController: SeacrhGithubView {
         self.present(alert, animated: true, completion: nil)
     }
     
-    func showCommitList() {
-        guard let viewController = storyboard?.instantiateViewController(withIdentifier: SearchViewConstants.listControllerIdentifier) else { return }
+    func showCommitList(project: String, repo: String) {
+        guard let viewController = storyboard?.instantiateViewController(withIdentifier: SearchViewConstants.listControllerIdentifier) as? AuthorListViewController else { return }
+        viewController.updateProject(project: project, repo: repo)
         navigationController?.pushViewController(viewController, animated: true)
     }
 }

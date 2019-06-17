@@ -29,6 +29,7 @@ class NetworkManagerTest: XCTestCase {
         manager = nil
     }
     
+    //More unit tests can be written covering all scenarios
     func testFetchList() {
         manager.fetchList(repoUrl: "commit", completion: completion, failure: failure)
         XCTAssertNotNil(mockDataTask)

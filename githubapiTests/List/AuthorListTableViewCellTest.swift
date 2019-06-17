@@ -32,9 +32,9 @@ class AuthorListTableViewCellTest: XCTestCase {
         cell.commitHashLabel = shaLabel
         cell.commitMessageLabel = commitMsgLabel
         
-        cell.configureCell(authorInfo: AuthorInfo("name", "sha", "commit message"))
+        cell.configureCell(authorInfo: AuthorInfo("name", "xcafyrr", "commit message"))
         XCTAssert(authorLabel.text == "name")
-        XCTAssert(shaLabel.text == "sha")
+        XCTAssert(shaLabel.text == "Commit: xcafyrr")
         XCTAssert(commitMsgLabel.text == "commit message")
     }
 }

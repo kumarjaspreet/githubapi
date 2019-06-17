@@ -8,26 +8,22 @@
 
 import Foundation
 
-struct GitContributions: Codable {
-    var total: Int?
-}
-
 struct GitAuthorDetails: Codable {
     var sha: String?
     var commit: GitCommit?
-    var author: GitAuthor?
     
     var commitMessage: String? {
         return commit?.message
     }
     
     var authorName: String? {
-        return author?.name
+        return commit?.author?.name
     }
 }
 
 struct GitCommit: Codable {
     var message: String?
+    var author: GitAuthor?
 }
 
 struct GitAuthor: Codable {
