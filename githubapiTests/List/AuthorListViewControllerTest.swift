@@ -35,7 +35,7 @@ class AuthorListViewControllerTest: XCTestCase {
         viewController.tableView = tableView
         viewController.loadingView = loadingView
         viewController.viewDidLoad()
-        XCTAssertTrue(mockViewModel.viewLoadedCalled)
+        XCTAssertTrue(mockViewModel.fetchListCalled)
         XCTAssertNotNil(tableView.refreshControl)
         XCTAssertFalse(loadingView.isHidden)
     }
@@ -65,6 +65,11 @@ class AuthorListViewControllerTest: XCTestCase {
         let rows = viewController.tableView(tableView, numberOfRowsInSection: 0)
         XCTAssert(rows == 1)
     }
+    
+    func testRefreshList() {
+        viewController.refreshList()
+        XCTAssertTrue(mockViewModel.fetchListCalled)
+    }
 }
 
 class MockAuthorListViewModel: GitAuthorViewModel {
@@ -77,9 +82,9 @@ class MockAuthorListViewModel: GitAuthorViewModel {
         self.manager = manager
     }
     
-    var viewLoadedCalled = false
+    var fetchListCalled = false
     func fetchList() {
-        viewLoadedCalled = true
+        fetchListCalled = true
     }
     
     func authorInfo(at index: Int) -> AuthorInfo {
@@ -106,8 +111,10 @@ class MockNetworkManager: GitNetworkManager {
         self.session = session
     }
     
+    var fetchServiceCalled = false
     var repoUrl: String?
     func fetchList<T>(repoUrl: String, completion: @escaping (([T]) -> Void), failure: @escaping ServiceFailure) where T : Decodable, T : Encodable {
         self.repoUrl = repoUrl
+        fetchServiceCalled = true
     }
 }

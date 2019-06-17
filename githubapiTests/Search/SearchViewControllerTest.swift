@@ -33,6 +33,12 @@ class SearchViewControllerTest: XCTestCase {
         viewController.searchButtonClicked(UIButton())
         XCTAssertTrue(mockViewModel.searchButtonClicked)
     }
+    
+    func testTextfieldShouldreturn() {
+        let textField = UITextField()
+        let value = viewController.textFieldShouldReturn(textField)
+        XCTAssertTrue(value)
+    }
 }
 
 class MockSearchViewModel: GithubSearchViewModel {
