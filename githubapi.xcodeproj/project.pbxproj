@@ -15,6 +15,8 @@
 		727C577A22B70E86006F18FE /* githubapiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C577922B70E86006F18FE /* githubapiUITests.swift */; };
 		727C578922B715BF006F18FE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578822B715BF006F18FE /* SearchViewController.swift */; };
 		727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578A22B715CC006F18FE /* SearchViewModel.swift */; };
+		727C578E22B71AF6006F18FE /* SearchViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578D22B71AF6006F18FE /* SearchViewControllerTest.swift */; };
+		727C579022B71AFF006F18FE /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578F22B71AFF006F18FE /* SearchViewModelTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		727C577B22B70E86006F18FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		727C578822B715BF006F18FE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		727C578A22B715CC006F18FE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		727C578D22B71AF6006F18FE /* SearchViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewControllerTest.swift; sourceTree = "<group>"; };
+		727C578F22B71AFF006F18FE /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +116,7 @@
 		727C576D22B70E86006F18FE /* githubapiTests */ = {
 			isa = PBXGroup;
 			children = (
+				727C578C22B71AE0006F18FE /* Search */,
 				727C576E22B70E86006F18FE /* githubapiTests.swift */,
 				727C577022B70E86006F18FE /* Info.plist */,
 			);
@@ -132,6 +137,15 @@
 			children = (
 				727C578822B715BF006F18FE /* SearchViewController.swift */,
 				727C578A22B715CC006F18FE /* SearchViewModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		727C578C22B71AE0006F18FE /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				727C578D22B71AF6006F18FE /* SearchViewControllerTest.swift */,
+				727C578F22B71AFF006F18FE /* SearchViewModelTest.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -277,6 +291,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727C579022B71AFF006F18FE /* SearchViewModelTest.swift in Sources */,
+				727C578E22B71AF6006F18FE /* SearchViewControllerTest.swift in Sources */,
 				727C576F22B70E86006F18FE /* githubapiTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
