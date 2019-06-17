@@ -12,16 +12,20 @@ typealias AuthorInfo = (name: String?, commit: String?, message: String?)
 
 protocol GitAuthorView: class {
     func reloadTable()
+    func showAlert(message: String)
 }
 
 protocol GitAuthorViewModel {
     var delegate: GitAuthorView? { get set }
+    init(project: String, repo: String,  manager: GitNetworkManager)
+    
     func viewLoaded()
     var numberOfRows: Int { get }
     func authorInfo(at index:Int) -> AuthorInfo
-    init(project: String, repo: String,  manager: GitNetworkManager)
+    func tableScrolled(at index: Int)
 }
 
 struct AuthorListConstants {
     static let cellIdentifier = "AuthorTableViewCell"
+    static let errorMessage = "Invalid project or repo name. Please go back and try again."
 }

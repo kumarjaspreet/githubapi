@@ -34,15 +34,14 @@ extension AuthorListViewModel: GitAuthorViewModel {
     }
     
     func viewLoaded() {
-        //TODO: Below code can be refactored to use URLComponents. Due to time issues, I am using straight url
-        let commitUrl = "\(NetworkConstants.perPageUrl)=\(NetworkConstants.commitsPerPage)"
-        let pageUrl = "\(NetworkConstants.currentpageUrl)=\(currentPage)"
-        let url = "\(projectName)/\(repoName)/commits?\(commitUrl)&\(pageUrl)"
-        networkManager.fetchList(repoUrl: url, completion: completion, failure: failure)
+        fetchCommitList()
     }
     
     func tableScrolled(at index: Int) {
-        
+        guard !isCommitListComplete else { return }
+        guard index+1 == commitList.count else { return }
+        currentPage += 1
+        fetchCommitList()
     }
     
     func resetList() {
@@ -50,15 +49,25 @@ extension AuthorListViewModel: GitAuthorViewModel {
         commitList = []
     }
     
+    private func fetchCommitList() {
+        //TODO: Below code can be refactored to use URLComponents.
+        let commitUrl = "\(NetworkConstants.perPageUrl)=\(NetworkConstants.commitsPerPage)"
+        let pageUrl = "\(NetworkConstants.currentpageUrl)=\(currentPage)"
+        let url = "\(projectName)/\(repoName)/commits?\(commitUrl)&\(pageUrl)"
+        networkManager.fetchList(repoUrl: url, completion: completion, failure: failure)
+    }
+    
     var completion: ServiceCompletion<GitAuthorDetails> {
         return {[weak self] list in
-            print(list)
+            print("**************************LIST LOADED >>>>>>>>>\(self!.currentPage)************************")
             self?.updateCommitList(list)
         }
     }
     
     var failure: ServiceFailure {
-        return { _ in
+        return { [weak self] _ in
+            guard self?.currentPage == 1 else { return }
+            self?.delegate?.showAlert(message: AuthorListConstants.errorMessage)
         }
     }
     

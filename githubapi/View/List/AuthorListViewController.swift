@@ -19,10 +19,20 @@ class AuthorListViewController: BaseViewController {
     
     func updateProject(project: String, repo: String) {
         viewModel = AuthorListViewModel(project: project, repo: repo)
+        viewModel.delegate = self
     }
 }
 
 extension AuthorListViewController: GitAuthorView {
+    func showAlert(message: String) {
+        DispatchQueue.main.async {[weak self] in
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func reloadTable() {
         DispatchQueue.main.async {[weak self] in
             self?.tableView.reloadData()
@@ -44,6 +54,10 @@ extension AuthorListViewController: UITableViewDataSource {
 }
 
 extension AuthorListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.tableScrolled(at: indexPath.row)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }

@@ -45,7 +45,7 @@ class NetworkManager: GitNetworkManager {
         guard let url = URL(string: urlString) else { return }
         let urlRequest = URLRequest(url: url)
         
-        
+
         dataTask = session.loadData(with: urlRequest) {[weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if let error = error {
