@@ -62,7 +62,6 @@ class AuthorListViewControllerTest: XCTestCase {
 }
 
 class MockAuthorListViewModel: GitAuthorViewModel {
-    
     var projectName: String?
     var repoName: String?
     var manager: GitNetworkManager?
@@ -85,6 +84,11 @@ class MockAuthorListViewModel: GitAuthorViewModel {
     
     var numberOfRows: Int {
         return 1
+    }
+    
+    var index: Int?
+    func tableScrolled(at index: Int) {
+        self.index = index
     }
 }
 

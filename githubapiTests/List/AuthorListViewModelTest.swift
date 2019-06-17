@@ -46,6 +46,21 @@ class AuthorListViewModelTest: XCTestCase {
 
 class MockAuthorListView: GitAuthorView {
     
+    var alertMessage: String?
+    func showAlert(message: String) {
+        self.alertMessage = message
+    }
+    
+    var stopTableRefreshCalled = false
+    func stopTableRefresh() {
+        stopTableRefreshCalled = true
+    }
+    
+    var hideLoadingViewCalled = false
+    func hideLoadingView() {
+        hideLoadingViewCalled = true
+    }
+    
     var reloadTableCalled = false
     func reloadTable() {
         reloadTableCalled = true
