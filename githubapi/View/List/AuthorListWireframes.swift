@@ -29,5 +29,5 @@ protocol GitAuthorViewModel {
 
 struct AuthorListConstants {
     static let cellIdentifier = "AuthorTableViewCell"
-    static let errorMessage = "Invalid project or repo name. Please go back and try again."
+    static let errorMessage = "Something went wrong! Please check project and repo name or try again later."
 }

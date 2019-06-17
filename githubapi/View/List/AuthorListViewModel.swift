@@ -43,8 +43,8 @@ extension AuthorListViewModel: GitAuthorViewModel {
     func tableScrolled(at index: Int) {
         guard !isCommitListComplete else { return }
         guard index+1 == commitList.count else { return }
-        //TODO: Below code can be optimized by using UITableViewDataSourcePrefetching
         currentPage += 1
+        //TODO: Below code can be optimized by using UITableViewDataSourcePrefetching
         fetchCommitList(at: currentPage)
     }
     
@@ -62,8 +62,7 @@ extension AuthorListViewModel: GitAuthorViewModel {
     }
     
     var completion: ServiceCompletion<GitAuthorDetails> {
-        return {[weak self] list in
-            print("**************************LIST LOADED >>>>>>>>>\(self!.currentPage)************************")
+        return { [weak self] list in
             self?.updateCommitList(list)
         }
     }
