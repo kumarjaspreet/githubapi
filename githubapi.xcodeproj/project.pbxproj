@@ -14,6 +14,8 @@
 		727C576422B70E86006F18FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 727C576222B70E86006F18FE /* LaunchScreen.storyboard */; };
 		727C576F22B70E86006F18FE /* githubapiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C576E22B70E86006F18FE /* githubapiTests.swift */; };
 		727C577A22B70E86006F18FE /* githubapiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C577922B70E86006F18FE /* githubapiUITests.swift */; };
+		727C578922B715BF006F18FE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578822B715BF006F18FE /* SearchViewController.swift */; };
+		727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 727C578A22B715CC006F18FE /* SearchViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		727C577522B70E86006F18FE /* githubapiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = githubapiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		727C577922B70E86006F18FE /* githubapiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = githubapiUITests.swift; sourceTree = "<group>"; };
 		727C577B22B70E86006F18FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		727C578822B715BF006F18FE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		727C578A22B715CC006F18FE /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		727C575822B70E86006F18FE /* githubapi */ = {
 			isa = PBXGroup;
 			children = (
+				727C578722B7158A006F18FE /* Search */,
 				727C575922B70E86006F18FE /* AppDelegate.swift */,
 				727C575B22B70E86006F18FE /* ViewController.swift */,
 				727C575D22B70E86006F18FE /* Main.storyboard */,
@@ -123,6 +128,15 @@
 				727C577B22B70E86006F18FE /* Info.plist */,
 			);
 			path = githubapiUITests;
+			sourceTree = "<group>";
+		};
+		727C578722B7158A006F18FE /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				727C578822B715BF006F18FE /* SearchViewController.swift */,
+				727C578A22B715CC006F18FE /* SearchViewModel.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,7 +270,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				727C578922B715BF006F18FE /* SearchViewController.swift in Sources */,
 				727C575C22B70E86006F18FE /* ViewController.swift in Sources */,
+				727C578B22B715CC006F18FE /* SearchViewModel.swift in Sources */,
 				727C575A22B70E86006F18FE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
