@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: BaseViewController {
     var viewModel: GithubSearchViewModel = SearchViewModel()
     
     @IBOutlet weak var projectNameTextField: UITextField!
