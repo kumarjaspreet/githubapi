@@ -37,6 +37,31 @@ class NetworkManagerTest: XCTestCase {
         XCTAssertTrue(mockDataTask.resumeCalled)
     }
     
+    func testNetworkResponseCompletionHandlerError() {
+        let networkCompletion = manager.networkResponseCompletionHandler(completion: completion, failure: failure)
+        let error = NSError(domain: "domain", code: 1, userInfo: nil)
+        networkCompletion(nil, nil, error)
+        XCTAssertTrue(failureCalled)
+    }
+    
+    func testNetworkResponseCompletionHandlerDecodeError() {
+        let networkCompletion = manager.networkResponseCompletionHandler(completion: completion, failure: failure)
+        networkCompletion(invalidModelData, nil, nil)
+        XCTAssertTrue(failureCalled)
+    }
+    
+    func testNetworkResponseCompletionDefaultError() {
+        let networkCompletion = manager.networkResponseCompletionHandler(completion: completion, failure: failure)
+        networkCompletion(nil, nil, nil)
+        XCTAssertTrue(failureCalled)
+    }
+    
+    func testNetworkResponseCompletionHandlerSuccess() {
+        let networkCompletion = manager.networkResponseCompletionHandler(completion: completion, failure: failure)
+        networkCompletion(validModelData, nil, nil)
+        XCTAssertTrue(completionCalled)
+    }
+    
     //Below code can be made more testable in future
     var completion: ServiceCompletion<MockGitModel> {
         return {[weak self] _ in
@@ -48,6 +73,18 @@ class NetworkManagerTest: XCTestCase {
         return {[weak self] _ in
             self?.failureCalled = true
         }
+    }
+    
+    private var invalidModelData: Data {
+        let object = ["test":["object":"any"]]
+        let data = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+        return data
+    }
+    
+    private var validModelData: Data {
+        let object = [["test":"1"], ["test":"2"], ["test":"3"]]
+        let data = try! JSONSerialization.data(withJSONObject: object, options: .prettyPrinted)
+        return data
     }
 }
 

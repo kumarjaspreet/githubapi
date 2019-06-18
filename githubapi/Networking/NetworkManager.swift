@@ -45,21 +45,25 @@ class NetworkManager: GitNetworkManager {
         guard let url = URL(string: urlString) else { return }
         let urlRequest = URLRequest(url: url)
         
-
-        dataTask = session.loadData(with: urlRequest) {[weak self] (data, response, error) in
+        let completionHandler = networkResponseCompletionHandler(completion: completion, failure: failure)
+        dataTask = session.loadData(with: urlRequest, completionHandler: completionHandler)
+        dataTask?.resume()
+    }
+    
+    func networkResponseCompletionHandler<T: Codable>(completion: @escaping ServiceCompletion<T>, failure: @escaping ServiceFailure) -> NetworkDataResult {
+        return {[weak self] (data, response, error) in
             guard let strongSelf = self else { return }
             if let error = error {
                 failure(error)
             } else if let data = data {
-                strongSelf.parseData(data, completion: completion, failure: failure)
+                strongSelf.parseSuccessData(data, completion: completion, failure: failure)
             } else {
                 failure(strongSelf.defaultError)
             }
         }
-        dataTask?.resume()
     }
     
-    func parseData<T: Codable>(_ data: Data, completion: ServiceCompletion<T>, failure: ServiceFailure) {
+    func parseSuccessData<T: Codable>(_ data: Data, completion: ServiceCompletion<T>, failure: ServiceFailure) {
         do {
             let decoder = JSONDecoder()
             let list = try decoder.decode([T].self, from: data)
